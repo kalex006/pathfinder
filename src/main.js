@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. MIND MAP ANIMATION (Side Columns & Central Web) ---
+    // --- 1. MIND MAP ANIMATION (Orbital Oval & White Strings) ---
     const canvas = document.getElementById('mindmap-bg');
     const ctx = canvas.getContext('2d');
     let nodes = [];
     const numNodes = 100; 
+    const connectionDist = 180; // Distance to draw connecting strings
     const copperColor = "#D98324";
 
     const topics = [
@@ -23,54 +24,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Node {
         constructor(text, index) {
-            // Split nodes: Even indexes go to the Left side, Odd indexes go to the Right side
-            this.side = index % 2 === 0 ? "left" : "right";
             this.text = text;
-            this.radius = 2; // Slightly larger dot for visibility
-
-            // Define horizontal boundaries based on side
-            this.minX = this.side === "left" ? 30 : canvas.width * 0.75;
-            this.maxX = this.side === "left" ? canvas.width * 0.25 : canvas.width - 30;
-
-            // Spawn within their respective side boundaries
-            this.x = this.minX + Math.random() * (this.maxX - this.minX);
-            this.y = Math.random() * canvas.height;
-
-            // Slow vertical drift, minimal horizontal drift
-            this.vx = (Math.random() - 0.5) * 0.05;
-            this.vy = (Math.random() - 0.5) * 0.25;
+            this.radius = 2; // Sharp, clear node points
+            
+            // Distribute angles evenly around the 360-degree oval
+            this.theta = (index / numNodes) * Math.PI * 2;
+            
+            // Ultra-slow, majestic orbital rotation speed
+            this.orbitSpeed = (Math.random() * 0.0003 + 0.0001) * (Math.random() > 0.5 ? 1 : -1);
+            
+            // Noise seed for the organic "breathing" wave effect
+            this.noiseSeed = Math.random() * 100;
+            
+            this.x = 0;
+            this.y = 0;
         }
 
         update() {
-            // Update boundaries dynamically on window resize
-            this.minX = this.side === "left" ? 30 : canvas.width * 0.75;
-            this.maxX = this.side === "left" ? canvas.width * 0.25 : canvas.width - 30;
+            // Slowly rotate the angle
+            this.theta += this.orbitSpeed;
+            this.noiseSeed += 0.005;
 
-            this.x += this.vx;
-            this.y += this.vy;
+            // Responsive Oval Radii (Adapts perfectly to mobile vs desktop)
+            const isMobile = canvas.width < 768;
+            const rx = isMobile ? canvas.width * 0.42 : Math.max(canvas.width * 0.38, 400);
+            const ry = isMobile ? canvas.height * 0.35 : Math.max(canvas.height * 0.35, 280);
 
-            // Keep horizontally constrained to their side
-            if (this.x < this.minX) { this.x = this.minX; this.vx *= -1; }
-            if (this.x > this.maxX) { this.x = this.maxX; this.vx *= -1; }
+            // Gentle breathing wave so the oval feels organic and alive
+            const wave = Math.sin(this.noiseSeed) * 15;
 
-            // Vertical wrapping
-            if (this.y < 0) this.y = canvas.height;
-            if (this.y > canvas.height) this.y = 0;
+            // Calculate elliptical coordinates around the center of the screen
+            this.x = (canvas.width / 2) + (rx + wave) * Math.cos(this.theta);
+            this.y = (canvas.height / 2) + (ry + wave) * Math.sin(this.theta);
         }
 
         draw() {
-            // Draw the node point
+            // Draw the copper node point
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = copperColor;
             ctx.fill();
 
-            // Larger, clearer letters
+            // Clear, bold copper letters
             ctx.font = "600 13px 'Inter', sans-serif";
-            ctx.fillStyle = "rgba(217, 131, 36, 0.75)"; // Clearer copper
+            ctx.fillStyle = "rgba(217, 131, 36, 0.75)";
 
-            // Align text away from the center web
-            if (this.side === "left") {
+            // Align text outward from the center of the oval
+            const cosTheta = Math.cos(this.theta);
+            if (cosTheta > 0) {
                 ctx.textAlign = "left";
                 ctx.fillText(this.text, this.x + 10, this.y + 4);
             } else {
@@ -88,41 +89,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+        // Update and draw nodes
+        for (let i = 0; i < nodes.length; i++) {
+            nodes[i].update();
+            nodes[i].draw();
+        }
+
+        // Draw the white connecting strings
         for (let i = 0; i < nodes.length; i++) {
             const a = nodes[i];
-            a.update();
-            a.draw();
-
             for (let j = i + 1; j < nodes.length; j++) {
                 const b = nodes[j];
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (a.side === b.side) {
-                    // Same side: standard local connections
-                    const dx = a.x - b.x;
-                    const dy = a.y - b.y;
-                    const dist = Math.sqrt(dx * dx + dy * dy);
-                    if (dist < 120) {
-                        ctx.beginPath();
-                        const alpha = (1 - (dist / 120)) * 0.12;
-                        ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.stroke();
-                    }
-                } else {
-                    // Opposite sides: draw the "web in between" across the center
-                    const dy = Math.abs(a.y - b.y);
-                    if (dy < 80) { // Only connect if they are vertically aligned
-                        ctx.beginPath();
-                        // Fainter lines for long spans across the center
-                        const alpha = (1 - (dy / 80)) * 0.06; 
-                        ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.stroke();
-                    }
+                if (dist < connectionDist) {
+                    ctx.beginPath();
+                    // Strings are white and fade out based on distance
+                    const alpha = (1 - (dist / connectionDist)) * 0.12;
+                    ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
+                    ctx.lineWidth = 0.6;
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
                 }
             }
         }
