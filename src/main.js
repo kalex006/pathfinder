@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. MIND MAP ANIMATION (Inspired by Learn Anything) ---
+    // --- 1. MIND MAP ANIMATION (Central Web & Side Spawning) ---
     const canvas = document.getElementById('mindmap-bg');
     const ctx = canvas.getContext('2d');
     let nodes = [];
     const numNodes = 100; 
-    const connectionDist = 180; // Clean, elegant web spacing
+    const connectionDist = 200; // Slightly wider reach for a bigger central web
     const copperColor = "#D98324";
 
     const topics = [
@@ -24,36 +24,70 @@ document.addEventListener('DOMContentLoaded', () => {
 
     class Node {
         constructor(text) {
-            this.x = Math.random() * canvas.width;
-            this.y = Math.random() * canvas.height;
-            // Slow, organic drift speeds
-            this.vx = (Math.random() - 0.5) * 0.25;
-            this.vy = (Math.random() - 0.5) * 0.25;
+            // Spawn nodes specifically on the sides/edges of the screen
+            if (Math.random() > 0.5) {
+                this.x = Math.random() > 0.5 ? 0 : canvas.width;
+                this.y = Math.random() * canvas.height;
+            } else {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() > 0.5 ? 0 : canvas.height;
+            }
+            
+            // Initial slow drift
+            this.vx = (Math.random() - 0.5) * 0.1;
+            this.vy = (Math.random() - 0.5) * 0.1;
             this.text = text;
-            this.radius = 1.5; // Sharp, minimalist dots
+            this.radius = 1.5;
         }
 
         update() {
+            // Calculate vector to the center of the screen
+            const centerX = canvas.width / 2;
+            const centerY = canvas.height / 2;
+            const dx = centerX - this.x;
+            const dy = centerY - this.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            // Gentle gravitational pull toward the center to form the "big web"
+            if (dist > 10) {
+                this.vx += (dx / dist) * 0.0015;
+                this.vy += (dy / dist) * 0.0015;
+            }
+
+            // Apply movement
             this.x += this.vx;
             this.y += this.vy;
 
-            // Infinite screen-wrap for a seamless background
-            if (this.x < 0) this.x = canvas.width;
-            if (this.x > canvas.width) this.x = 0;
-            if (this.y < 0) this.y = canvas.height;
-            if (this.y > canvas.height) this.y = 0;
+            // Speed limit to keep the motion slow, smooth, and organic
+            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
+            const maxSpeed = 0.35; 
+            if (speed > maxSpeed) {
+                this.vx = (this.vx / speed) * maxSpeed;
+                this.vy = (this.vy / speed) * maxSpeed;
+            }
+
+            // If a node drifts too far off-screen, respawn it back on the sides
+            if (this.x < -50 || this.x > canvas.width + 50 || this.y < -50 || this.y > canvas.height + 50) {
+                if (Math.random() > 0.5) {
+                    this.x = Math.random() > 0.5 ? 0 : canvas.width;
+                    this.y = Math.random() * canvas.height;
+                } else {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() > 0.5 ? 0 : canvas.height;
+                }
+                this.vx = (Math.random() - 0.5) * 0.1;
+                this.vy = (Math.random() - 0.5) * 0.1;
+            }
         }
 
         draw() {
-            // Draw the node point
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = copperColor;
             ctx.fill();
 
-            // Draw the clean label
             ctx.font = "500 11px 'Inter', sans-serif";
-            ctx.fillStyle = "rgba(217, 131, 36, 0.55)"; // Muted copper
+            ctx.fillStyle = "rgba(217, 131, 36, 0.55)";
             ctx.fillText(this.text, this.x + 8, this.y + 4);
         }
     }
@@ -71,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             a.update();
             a.draw();
 
-            // Draw delicate connecting lines
             for (let j = i + 1; j < nodes.length; j++) {
                 const b = nodes[j];
                 const dx = a.x - b.x;
@@ -80,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (dist < connectionDist) {
                     ctx.beginPath();
+                    // Lines fade out based on distance
                     const alpha = (1 - (dist / connectionDist)) * 0.15;
                     ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
                     ctx.lineWidth = 0.6;
