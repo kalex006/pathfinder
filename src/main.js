@@ -1,9 +1,99 @@
-// src/main.js
-
 document.addEventListener('DOMContentLoaded', () => {
-    // [Keep your Mind Map Canvas Code here from the previous permanent baseline]
-    // ... (Mind map code) ...
+    // --- 1. MIND MAP ANIMATION (Inspired by Learn Anything) ---
+    const canvas = document.getElementById('mindmap-bg');
+    const ctx = canvas.getContext('2d');
+    let nodes = [];
+    const numNodes = 100; 
+    const connectionDist = 180; // Clean, elegant web spacing
+    const copperColor = "#D98324";
 
+    const topics = [
+        "Ethical Hacker", "Data Scientist", "Investment Banker", "Surgeon", "UI/UX Designer", "AI Engineer", "Psychologist", "Lawyer", "Pilot", "Astrobiologist",
+        "Quantum Scientist", "Biotechnologist", "Aerospace Engineer", "Robotics Expert", "Genetic Counselor", "Nanotechnologist", "Neurocomputational Engineer",
+        "Nuclear Researcher", "Epidemiologist", "Marine Biologist", "Materials Scientist", "Volcanologist", "Bioinformatician", "Virologist", "Agro-Tech Specialist",
+        "Theoretical Physicist", "Forensic Scientist", "Geophysicist", "Audio Engineer", "Fluid Dynamics Expert", "Pharmaceutical Developer", "Renewable Energy Engineer",
+        "Meteorologist", "Cryptographer", "Optical Physicist", "Food Technologist", "Prosthetic Designer", "Restoration Scientist", "Immunologist", "Evolutionary Biologist"
+    ];
+
+    function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Node {
+        constructor(text) {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            // Slow, organic drift speeds
+            this.vx = (Math.random() - 0.5) * 0.25;
+            this.vy = (Math.random() - 0.5) * 0.25;
+            this.text = text;
+            this.radius = 1.5; // Sharp, minimalist dots
+        }
+
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+
+            // Infinite screen-wrap for a seamless background
+            if (this.x < 0) this.x = canvas.width;
+            if (this.x > canvas.width) this.x = 0;
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
+        }
+
+        draw() {
+            // Draw the node point
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+            ctx.fillStyle = copperColor;
+            ctx.fill();
+
+            // Draw the clean label
+            ctx.font = "500 11px 'Inter', sans-serif";
+            ctx.fillStyle = "rgba(217, 131, 36, 0.55)"; // Muted copper
+            ctx.fillText(this.text, this.x + 8, this.y + 4);
+        }
+    }
+
+    // Initialize 100 Nodes
+    for (let i = 0; i < numNodes; i++) {
+        nodes.push(new Node(topics[i % topics.length]));
+    }
+
+    function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        for (let i = 0; i < nodes.length; i++) {
+            const a = nodes[i];
+            a.update();
+            a.draw();
+
+            // Draw delicate connecting lines
+            for (let j = i + 1; j < nodes.length; j++) {
+                const b = nodes[j];
+                const dx = a.x - b.x;
+                const dy = a.y - b.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+
+                if (dist < connectionDist) {
+                    ctx.beginPath();
+                    const alpha = (1 - (dist / connectionDist)) * 0.15;
+                    ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
+                    ctx.lineWidth = 0.6;
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+
+    // --- 2. INTERFACE CONTROLLER ---
     const app = document.getElementById('app');
     let currentField = "";
     let currentQuestion = 0;
