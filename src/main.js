@@ -1,18 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. MIND MAP ANIMATION (Orbital Oval & White Strings) ---
+    // --- 1. MIND MAP ANIMATION (True Branching Tree & White Strings) ---
     const canvas = document.getElementById('mindmap-bg');
     const ctx = canvas.getContext('2d');
-    let nodes = [];
-    const numNodes = 100; 
-    const connectionDist = 180; // Distance to draw connecting strings
     const copperColor = "#D98324";
 
-    const topics = [
-        "Ethical Hacker", "Data Scientist", "Investment Banker", "Surgeon", "UI/UX Designer", "AI Engineer", "Psychologist", "Lawyer", "Pilot", "Astrobiologist",
-        "Quantum Scientist", "Biotechnologist", "Aerospace Engineer", "Robotics Expert", "Genetic Counselor", "Nanotechnologist", "Neurocomputational Engineer",
-        "Nuclear Researcher", "Epidemiologist", "Marine Biologist", "Materials Scientist", "Volcanologist", "Bioinformatician", "Virologist", "Agro-Tech Specialist",
-        "Theoretical Physicist", "Forensic Scientist", "Geophysicist", "Audio Engineer", "Fluid Dynamics Expert", "Pharmaceutical Developer", "Renewable Energy Engineer",
-        "Meteorologist", "Cryptographer", "Optical Physicist", "Food Technologist", "Prosthetic Designer", "Restoration Scientist", "Immunologist", "Evolutionary Biologist"
+    // Structured Mind Map Database (Parent-Child Relationships)
+    const mindMapNodes = [
+        // Level 0: Root (Center)
+        { id: "root", text: "PATHFINDER", parent: null, relX: 0, relY: 0, isRoot: true },
+
+        // Level 1: Main Domains
+        { id: "sci", text: "SCIENCE", parent: "root", relX: -320, relY: -180 },
+        { id: "com", text: "COMMERCE", parent: "root", relX: 320, relY: -100 },
+        { id: "art", text: "ARTS", parent: "root", relX: -250, relY: 220 },
+
+        // Level 2: Science Branches
+        { id: "cyber", text: "Cybersecurity", parent: "sci", relX: -180, relY: -80 },
+        { id: "ai", text: "AI & ML", parent: "sci", relX: -180, relY: 0 },
+        { id: "quantum", text: "Quantum Computing", parent: "sci", relX: -180, relY: 80 },
+        { id: "biotech", text: "Biotechnology", parent: "sci", relX: -80, relY: -150 },
+        { id: "astro", text: "Astrobiology", parent: "sci", relX: 80, relY: -150 },
+
+        // Level 2: Commerce Branches
+        { id: "ib", text: "Investment Banking", parent: "com", relX: 180, relY: -80 },
+        { id: "fintech", text: "Fintech", parent: "com", relX: 180, relY: 0 },
+        { id: "quant", text: "Quantitative Finance", parent: "com", relX: 180, relY: 80 },
+        { id: "supply", text: "Global Logistics", parent: "com", relX: 80, relY: -150 },
+
+        // Level 2: Arts Branches
+        { id: "ux", text: "UI/UX Design", parent: "art", relX: -180, relY: 60 },
+        { id: "law", text: "Human Rights Law", parent: "art", relX: 0, relY: 120 },
+        { id: "psych", text: "Forensic Psychology", parent: "art", relX: 180, relY: 60 },
+        { id: "ling", text: "Computational Linguistics", parent: "art", relX: -100, relY: -100 }
     ];
 
     function resize() {
@@ -22,100 +41,95 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', resize);
     resize();
 
-    class Node {
-        constructor(text, index) {
-            this.text = text;
-            this.radius = 2; // Sharp, clear node points
-            
-            // Distribute angles evenly around the 360-degree oval
-            this.theta = (index / numNodes) * Math.PI * 2;
-            
-            // Ultra-slow, majestic orbital rotation speed
-            this.orbitSpeed = (Math.random() * 0.0003 + 0.0001) * (Math.random() > 0.5 ? 1 : -1);
-            
-            // Noise seed for the organic "breathing" wave effect
-            this.noiseSeed = Math.random() * 100;
-            
-            this.x = 0;
-            this.y = 0;
-        }
-
-        update() {
-            // Slowly rotate the angle
-            this.theta += this.orbitSpeed;
-            this.noiseSeed += 0.005;
-
-            // Responsive Oval Radii (Adapts perfectly to mobile vs desktop)
-            const isMobile = canvas.width < 768;
-            const rx = isMobile ? canvas.width * 0.42 : Math.max(canvas.width * 0.38, 400);
-            const ry = isMobile ? canvas.height * 0.35 : Math.max(canvas.height * 0.35, 280);
-
-            // Gentle breathing wave so the oval feels organic and alive
-            const wave = Math.sin(this.noiseSeed) * 15;
-
-            // Calculate elliptical coordinates around the center of the screen
-            this.x = (canvas.width / 2) + (rx + wave) * Math.cos(this.theta);
-            this.y = (canvas.height / 2) + (ry + wave) * Math.sin(this.theta);
-        }
-
-        draw() {
-            // Draw the copper node point
-            ctx.beginPath();
-            ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-            ctx.fillStyle = copperColor;
-            ctx.fill();
-
-            // Clear, bold copper letters
-            ctx.font = "600 13px 'Inter', sans-serif";
-            ctx.fillStyle = "rgba(217, 131, 36, 0.75)";
-
-            // Align text outward from the center of the oval
-            const cosTheta = Math.cos(this.theta);
-            if (cosTheta > 0) {
-                ctx.textAlign = "left";
-                ctx.fillText(this.text, this.x + 10, this.y + 4);
-            } else {
-                ctx.textAlign = "right";
-                ctx.fillText(this.text, this.x - 10, this.y + 4);
-            }
-        }
-    }
-
-    // Initialize 100 Nodes
-    for (let i = 0; i < numNodes; i++) {
-        nodes.push(new Node(topics[i % topics.length], i));
+    // Helper function to draw rounded rectangle pills (Learn Anything Style)
+    function drawRoundRect(x, y, width, height, radius, fillStyle, strokeStyle) {
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+        ctx.lineTo(x + radius, y + height);
+        ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+        
+        ctx.fillStyle = fillStyle;
+        ctx.fill();
+        ctx.strokeStyle = strokeStyle;
+        ctx.lineWidth = 1;
+        ctx.stroke();
     }
 
     function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // Update and draw nodes
-        for (let i = 0; i < nodes.length; i++) {
-            nodes[i].update();
-            nodes[i].draw();
-        }
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2;
+        const time = Date.now() * 0.0008; // Slow, majestic swaying speed
 
-        // Draw the white connecting strings
-        for (let i = 0; i < nodes.length; i++) {
-            const a = nodes[i];
-            for (let j = i + 1; j < nodes.length; j++) {
-                const b = nodes[j];
-                const dx = a.x - b.x;
-                const dy = a.y - b.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
+        // 1. Calculate dynamic positions with organic swaying
+        const activeNodes = mindMapNodes.map((node, index) => {
+            // Sway offset unique to each node so they don't move rigidly
+            const swayX = Math.sin(time + index * 0.5) * 12;
+            const swayY = Math.cos(time * 0.8 + index * 0.5) * 12;
 
-                if (dist < connectionDist) {
+            // Scale positions slightly on smaller screens
+            const scale = canvas.width < 768 ? 0.6 : 1.0;
+
+            return {
+                ...node,
+                x: cx + (node.relX * scale) + swayX,
+                y: cy + (node.relY * scale) + swayY
+            };
+        });
+
+        // 2. Draw White Connecting Strings (Parent to Child)
+        activeNodes.forEach(node => {
+            if (node.parent) {
+                const parentNode = activeNodes.find(n => n.id === node.parent);
+                if (parentNode) {
                     ctx.beginPath();
-                    // Strings are white and fade out based on distance
-                    const alpha = (1 - (dist / connectionDist)) * 0.12;
-                    ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.moveTo(a.x, a.y);
-                    ctx.lineTo(b.x, b.y);
+                    ctx.strokeStyle = "rgba(255, 255, 255, 0.15)"; // Elegant White Strings
+                    ctx.lineWidth = 0.8;
+                    ctx.moveTo(parentNode.x, parentNode.y);
+                    ctx.lineTo(node.x, node.y);
                     ctx.stroke();
                 }
             }
-        }
+        });
+
+        // 3. Draw Glassmorphic Pills and Text Labels
+        activeNodes.forEach(node => {
+            // Skip drawing the root node text if it overlaps your main UI card
+            if (node.isRoot) return;
+
+            ctx.font = "600 13px 'Inter', sans-serif"; // "Little Big" letters
+            const textWidth = ctx.measureText(node.text).width;
+            
+            const paddingX = 16;
+            const paddingY = 10;
+            const pillWidth = textWidth + paddingX * 2;
+            const pillHeight = 13 + paddingY * 2;
+
+            const px = node.x - pillWidth / 2;
+            const py = node.y - pillHeight / 2;
+
+            // Draw the glassmorphic pill container
+            drawRoundRect(
+                px, py, pillWidth, pillHeight, 6,
+                "rgba(255, 255, 255, 0.02)", // Subtle glass fill
+                "rgba(217, 131, 36, 0.25)"   // Subtle copper border
+            );
+
+            // Draw the bold copper text inside the pill
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            ctx.fillStyle = "rgba(217, 131, 36, 0.85)"; // High visibility copper
+            ctx.fillText(node.text, node.x, node.y);
+        });
+
         requestAnimationFrame(animate);
     }
     animate();
