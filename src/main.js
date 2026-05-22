@@ -15,10 +15,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "art", text: "ARTS", parent: "root", relX: -250, relY: 220 },
 
         // Level 2: Science Branches
-        { id: "cyber", text: "Cybersecurity", parent: "sci", relX: -180, relY: -80 },
-        { id: "ai", text: "AI & ML", parent: "sci", relX: -180, relY: 0 },
-        { id: "quantum", text: "Quantum Computing", parent: "sci", relX: -180, relY: 80 },
-        { id: "biotech", text: "Biotechnology", parent: "sci", relX: -80, relY: -150 },
+        { id: "cyber", text: "Cybersecurity", parent: "sci", relX: -450, relY: -200 },
+        { id: "ai", text: "AI & ML", parent: "sci", relX: -390, relY: -310 },
+        { id: "quantum", text: "Quantum Computing", parent: "sci", relX: -500, relY: -250 },
+        { id: "biotech", text: "Biotechnology", parent: "sci", relX: -450, relY: -350 },
         { id: "astro", text: "Astrobiology", parent: "sci", relX: 80, relY: -150 },
 
         // Level 2: Commerce Branches
