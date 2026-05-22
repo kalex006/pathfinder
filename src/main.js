@@ -1,10 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. MIND MAP ANIMATION (Central Web & Side Spawning) ---
+    // --- 1. MIND MAP ANIMATION (Side Columns & Central Web) ---
     const canvas = document.getElementById('mindmap-bg');
     const ctx = canvas.getContext('2d');
     let nodes = [];
     const numNodes = 100; 
-    const connectionDist = 200; // Slightly wider reach for a bigger central web
     const copperColor = "#D98324";
 
     const topics = [
@@ -23,78 +22,67 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
 
     class Node {
-        constructor(text) {
-            // Spawn nodes specifically on the sides/edges of the screen
-            if (Math.random() > 0.5) {
-                this.x = Math.random() > 0.5 ? 0 : canvas.width;
-                this.y = Math.random() * canvas.height;
-            } else {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() > 0.5 ? 0 : canvas.height;
-            }
-            
-            // Initial slow drift
-            this.vx = (Math.random() - 0.5) * 0.1;
-            this.vy = (Math.random() - 0.5) * 0.1;
+        constructor(text, index) {
+            // Split nodes: Even indexes go to the Left side, Odd indexes go to the Right side
+            this.side = index % 2 === 0 ? "left" : "right";
             this.text = text;
-            this.radius = 1.5;
+            this.radius = 2; // Slightly larger dot for visibility
+
+            // Define horizontal boundaries based on side
+            this.minX = this.side === "left" ? 30 : canvas.width * 0.75;
+            this.maxX = this.side === "left" ? canvas.width * 0.25 : canvas.width - 30;
+
+            // Spawn within their respective side boundaries
+            this.x = this.minX + Math.random() * (this.maxX - this.minX);
+            this.y = Math.random() * canvas.height;
+
+            // Slow vertical drift, minimal horizontal drift
+            this.vx = (Math.random() - 0.5) * 0.05;
+            this.vy = (Math.random() - 0.5) * 0.25;
         }
 
         update() {
-            // Calculate vector to the center of the screen
-            const centerX = canvas.width / 2;
-            const centerY = canvas.height / 2;
-            const dx = centerX - this.x;
-            const dy = centerY - this.y;
-            const dist = Math.sqrt(dx * dx + dy * dy);
+            // Update boundaries dynamically on window resize
+            this.minX = this.side === "left" ? 30 : canvas.width * 0.75;
+            this.maxX = this.side === "left" ? canvas.width * 0.25 : canvas.width - 30;
 
-            // Gentle gravitational pull toward the center to form the "big web"
-            if (dist > 10) {
-                this.vx += (dx / dist) * 0.0015;
-                this.vy += (dy / dist) * 0.0015;
-            }
-
-            // Apply movement
             this.x += this.vx;
             this.y += this.vy;
 
-            // Speed limit to keep the motion slow, smooth, and organic
-            const speed = Math.sqrt(this.vx * this.vx + this.vy * this.vy);
-            const maxSpeed = 0.35; 
-            if (speed > maxSpeed) {
-                this.vx = (this.vx / speed) * maxSpeed;
-                this.vy = (this.vy / speed) * maxSpeed;
-            }
+            // Keep horizontally constrained to their side
+            if (this.x < this.minX) { this.x = this.minX; this.vx *= -1; }
+            if (this.x > this.maxX) { this.x = this.maxX; this.vx *= -1; }
 
-            // If a node drifts too far off-screen, respawn it back on the sides
-            if (this.x < -50 || this.x > canvas.width + 50 || this.y < -50 || this.y > canvas.height + 50) {
-                if (Math.random() > 0.5) {
-                    this.x = Math.random() > 0.5 ? 0 : canvas.width;
-                    this.y = Math.random() * canvas.height;
-                } else {
-                    this.x = Math.random() * canvas.width;
-                    this.y = Math.random() > 0.5 ? 0 : canvas.height;
-                }
-                this.vx = (Math.random() - 0.5) * 0.1;
-                this.vy = (Math.random() - 0.5) * 0.1;
-            }
+            // Vertical wrapping
+            if (this.y < 0) this.y = canvas.height;
+            if (this.y > canvas.height) this.y = 0;
         }
 
         draw() {
+            // Draw the node point
             ctx.beginPath();
             ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
             ctx.fillStyle = copperColor;
             ctx.fill();
 
-            ctx.font = "500 11px 'Inter', sans-serif";
-            ctx.fillStyle = "rgba(217, 131, 36, 0.55)";
-            ctx.fillText(this.text, this.x + 8, this.y + 4);
+            // Larger, clearer letters
+            ctx.font = "600 13px 'Inter', sans-serif";
+            ctx.fillStyle = "rgba(217, 131, 36, 0.75)"; // Clearer copper
+
+            // Align text away from the center web
+            if (this.side === "left") {
+                ctx.textAlign = "left";
+                ctx.fillText(this.text, this.x + 10, this.y + 4);
+            } else {
+                ctx.textAlign = "right";
+                ctx.fillText(this.text, this.x - 10, this.y + 4);
+            }
         }
     }
 
     // Initialize 100 Nodes
     for (let i = 0; i < numNodes; i++) {
-        nodes.push(new Node(topics[i % topics.length]));
+        nodes.push(new Node(topics[i % topics.length], i));
     }
 
     function animate() {
@@ -107,19 +95,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
             for (let j = i + 1; j < nodes.length; j++) {
                 const b = nodes[j];
-                const dx = a.x - b.x;
-                const dy = a.y - b.y;
-                const dist = Math.sqrt(dx * dx + dy * dy);
 
-                if (dist < connectionDist) {
-                    ctx.beginPath();
-                    // Lines fade out based on distance
-                    const alpha = (1 - (dist / connectionDist)) * 0.15;
-                    ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
-                    ctx.lineWidth = 0.6;
-                    ctx.moveTo(a.x, a.y);
-                    ctx.lineTo(b.x, b.y);
-                    ctx.stroke();
+                if (a.side === b.side) {
+                    // Same side: standard local connections
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        const alpha = (1 - (dist / 120)) * 0.12;
+                        ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
+                } else {
+                    // Opposite sides: draw the "web in between" across the center
+                    const dy = Math.abs(a.y - b.y);
+                    if (dy < 80) { // Only connect if they are vertically aligned
+                        ctx.beginPath();
+                        // Fainter lines for long spans across the center
+                        const alpha = (1 - (dy / 80)) * 0.06; 
+                        ctx.strokeStyle = `rgba(217, 131, 36, ${alpha})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(a.x, a.y);
+                        ctx.lineTo(b.x, b.y);
+                        ctx.stroke();
+                    }
                 }
             }
         }
