@@ -15,12 +15,26 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "art", text: "ARTS", parent: "root", relX: -250, relY: 220 },
 
         // Level 2: Science Branches
-        { id: "cyber", text: "Cybersecurity", parent: "sci", relX: -450, relY: -200 },
-        { id: "ai", text: "AI & ML", parent: "sci", relX: -390, relY: -310 },
-        { id: "quantum", text: "Quantum Computing", parent: "sci", relX: -500, relY: -250 },
-        { id: "biotech", text: "Biotechnology", parent: "sci", relX: -450, relY: -350 },
-        { id: "astro", text: "Astrobiology", parent: "sci", relX: 80, relY: -150 },
-
+        { id: "cyber",     text: "Cybersecurity",                 parent: "sci", relX: -450, relY: -200 },
+        { id: "ai",        text: "AI & ML",                       parent: "sci", relX: -300, relY: -350 },
+        { id: "quantum",   text: "Quantum Computing",             parent: "sci", relX: -500, relY: -250 },
+        { id: "biotech",   text: "Biotechnology",                 parent: "sci", relX: -450, relY: -350 },
+        { id: "data",      text: "Data Scientist",                parent: "sci", relX: -600, relY: -350 },
+        { id: "aero",      text: "aerospace enginneer",           parent: "sci", relX: -650, relY: -200 },
+        { id: "robot",     text: "Robotics Automation Expert",    parent: "sci", relX: -650, relY: -50  },
+        { id: "Nano",      text: "Nanotechnologist",              parent: "sci", relX: -690, relY: -280 },
+        { id: "Neuro",     text: "Neurocomputational Engineer",   parent: "sci", relX: -250, relY: -250 },
+        { id: "Astro",     text: "Astrobiologist",                parent: "sci", relX: -300, relY: -100 },
+        { id: "Nuclear",   text: "Nuclear Fusion Researcher",     parent: "sci", relX: -590, relY: -110 },
+        { id: "Epidemi",   text: "Epidemiologist",                parent: "sci", relX: -100, relY: -300 },
+        { id: "Marine",    text: "Marine Biologist",              parent: "sci", relX: -90,  relY: -180 },
+        { id: "Material",  text: "Materials Scientist",           parent: "sci", relX: -500, relY:   10 },
+        { id: "Volcano",   text: "Volcanologist",                 parent: "sci", relX: -650, relY:   50 },
+        { id: "Bio",       text: "Bioinformatician",              parent: "sci", relX: -450,  relY:  90 },
+        { id: "Viro",      text: "Virologist",                    parent: "sci", relX: -100,  relY:-350 },
+        { id: "Agro-Tech", text: "Agro-Tech Specialist",          parent: "sci", relX: 100,  relY: -300 },
+        { id: "Theore",    text: "Theoretical Physicist",         parent: "sci", relX:  70,  relY: -230 },
+        
         // Level 2: Commerce Branches
         { id: "ib", text: "Investment Banking", parent: "com", relX: 180, relY: -80 },
         { id: "fintech", text: "Fintech", parent: "com", relX: 180, relY: 0 },
@@ -91,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const parentNode = activeNodes.find(n => n.id === node.parent);
                 if (parentNode) {
                     ctx.beginPath();
-                    ctx.strokeStyle = "rgba(255, 255, 255, 0.15)"; // Elegant White Strings
+                    ctx.strokeStyle = "rgba(255, 255, 255, 0.25)"; // Elegant White Strings
                     ctx.lineWidth = 0.8;
                     ctx.moveTo(parentNode.x, parentNode.y);
                     ctx.lineTo(node.x, node.y);
