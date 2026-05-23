@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "root", text: "PATHFINDER", parent: null, relX: 0, relY: 0, isRoot: true },
 
         // Level 1: Main Domains
-        { id: "sci", text: "SCIENCE", parent: "root", relX: -320, relY: -180 },
-        { id: "com", text: "COMMERCE", parent: "root", relX: 320, relY: -100 },
-        { id: "art", text: "ARTS", parent: "root", relX: -250, relY: 220 },
+        { id: "sci", text: "SCIENCE",  parent: "root", relX: -320,  relY: -180 },
+        { id: "com", text: "COMMERCE", parent: "root", relX:  320,  relY: -100 },
+        { id: "art", text: "ARTS",     parent: "root", relX: -250,  relY: 220  },
 
         // Level 2: Science Branches
         { id: "cyber",     text: "Cybersecurity",                 parent: "sci", relX: -450, relY: -200 },
@@ -36,10 +36,10 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "Theore",    text: "Theoretical Physicist",         parent: "sci", relX:  70,  relY: -230 },
         
         // Level 2: Commerce Branches
-        { id: "ib", text: "Investment Banking", parent: "com", relX: 180, relY: -80 },
-        { id: "fintech", text: "Fintech", parent: "com", relX: 180, relY: 0 },
-        { id: "quant", text: "Quantitative Finance", parent: "com", relX: 180, relY: 80 },
-        { id: "supply", text: "Global Logistics", parent: "com", relX: 80, relY: -150 },
+        { id: "ib",      text: "Investment Banking",   parent: "com", relX: 180, relY: -80  },
+        { id: "fintech", text: "Fintech",              parent: "com", relX: 180, relY: 0    },
+        { id: "quant",   text: "Quantitative Finance", parent: "com", relX: 180, relY: 80   },
+        { id: "supply",  text: "Global Logistics",     parent: "com", relX: 80,  relY: -150 },
 
         // Level 2: Arts Branches
         { id: "ux", text: "UI/UX Design", parent: "art", relX: -180, relY: 60 },
