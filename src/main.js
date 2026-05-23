@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "quantum",   text: "Quantum Computing",             parent: "sci", relX: -500, relY: -250 },
         { id: "biotech",   text: "Biotechnology",                 parent: "sci", relX: -450, relY: -350 },
         { id: "data",      text: "Data Scientist",                parent: "sci", relX: -600, relY: -350 },
-        { id: "aero",      text: "aerospace enginneer",           parent: "sci", relX: -650, relY: -200 },
+        { id: "aero",      text: "Aerospace Engineer",            parent: "sci", relX: -650, relY: -200 },
         { id: "robot",     text: "Robotics Automation Expert",    parent: "sci", relX: -650, relY: -50  },
         { id: "Nano",      text: "Nanotechnologist",              parent: "sci", relX: -690, relY: -280 },
         { id: "Neuro",     text: "Neurocomputational Engineer",   parent: "sci", relX: -250, relY: -250 },
@@ -83,14 +83,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const cy = canvas.height / 2;
         const time = Date.now() * 0.0008; // Slow, majestic swaying speed
 
+        // Dynamic scaling factor based on screen width to prevent off-screen overflow
+        const isMobile = canvas.width < 768;
+        const scale = isMobile ? Math.max(canvas.width / 1100, 0.35) : 1.0;
+
         // 1. Calculate dynamic positions with organic swaying
         const activeNodes = mindMapNodes.map((node, index) => {
-            // Sway offset unique to each node so they don't move rigidly
-            const swayX = Math.sin(time + index * 0.5) * 12;
-            const swayY = Math.cos(time * 0.8 + index * 0.5) * 12;
-
-            // Scale positions slightly on smaller screens
-            const scale = canvas.width < 768 ? 0.6 : 1.0;
+            const swayX = Math.sin(time + index * 0.5) * (isMobile ? 6 : 12);
+            const swayY = Math.cos(time * 0.8 + index * 0.5) * (isMobile ? 6 : 12);
 
             return {
                 ...node,
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (parentNode) {
                     ctx.beginPath();
                     ctx.strokeStyle = "rgba(255, 255, 255, 0.25)"; // Elegant White Strings
-                    ctx.lineWidth = 0.8;
+                    ctx.lineWidth = isMobile ? 0.5 : 0.8;
                     ctx.moveTo(parentNode.x, parentNode.y);
                     ctx.lineTo(node.x, node.y);
                     ctx.stroke();
@@ -116,23 +116,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 3. Draw Glassmorphic Pills and Text Labels
         activeNodes.forEach(node => {
-            // Skip drawing the root node text if it overlaps your main UI card
             if (node.isRoot) return;
 
-            ctx.font = "600 13px 'Inter', sans-serif"; // "Little Big" letters
+            // Scale down font size on mobile to prevent overlapping
+            ctx.font = isMobile ? "600 9px 'Inter', sans-serif" : "600 13px 'Inter', sans-serif";
             const textWidth = ctx.measureText(node.text).width;
             
-            const paddingX = 16;
-            const paddingY = 10;
+            // Tighter padding on mobile
+            const paddingX = isMobile ? 8 : 16;
+            const paddingY = isMobile ? 5 : 10;
+            const textHeight = isMobile ? 9 : 13;
             const pillWidth = textWidth + paddingX * 2;
-            const pillHeight = 13 + paddingY * 2;
+            const pillHeight = textHeight + paddingY * 2;
 
             const px = node.x - pillWidth / 2;
             const py = node.y - pillHeight / 2;
 
             // Draw the glassmorphic pill container
             drawRoundRect(
-                px, py, pillWidth, pillHeight, 6,
+                px, py, pillWidth, pillHeight, 4,
                 "rgba(255, 255, 255, 0.02)", // Subtle glass fill
                 "rgba(217, 131, 36, 0.25)"   // Subtle copper border
             );
