@@ -1202,30 +1202,607 @@ const CAREER_DATABASE = {
         }
     ],
     Arts: [
+        Arts: [
         {
-            name: "UI/UX Experience Designer",
-            keywords: { "art": 3, "design": 5, "user": 4, "look": 3, "feel": 2, "app": 4, "creative": 4, "psychology": 3 },
-            roadmap: "Master Figma, Adobe XD, and build a portfolio focusing on Case Studies.",
-            bridge: "Bridge: Focus on Visual Hierarchy and Human-Computer Interaction (HCI) fundamentals."
+            name: "UI & UX Experience Designer",
+            keywords: { "art": 3, "design": 5, "user": 5, "look": 4, "feel": 3, "app": 4, "creative": 4, "psychology": 4 },
+            roadmap: "Master Figma toolsets, visual layout psychology, and design case studies.",
+            bridge: "Connect basic graphic arts styles with interactive digital human-computer application designs."
         },
         {
             name: "International Human Rights Lawyer",
-            keywords: { "justice": 5, "law": 5, "court": 4, "debate": 3, "global": 3, "help": 2, "society": 3, "policy": 4 },
-            roadmap: "Complete your LLB, participate in Moot Courts, and specialize in International Law.",
-            bridge: "Bridge: Focus on Critical Thinking, Legal Writing, and Political Science modules."
+            keywords: { "law": 5, "speech": 4, "global": 4, "society": 3, "help": 3, "negotiate": 4, "justice": 5 },
+            roadmap: "Earn a law degree, master international legal treaties, and intern with global activist NGOs.",
+            bridge: "Use strong rhetorical writing skills to influence international humanitarian policy frameworks."
         },
         {
-            name: "Computational Linguist",
-            keywords: { "language": 5, "syntax": 4, "grammar": 3, "code": 3, "structure": 2, "logic": 3, "nlp": 5 },
-            roadmap: "Master Python and study Natural Language Processing (NLP) models.",
-            bridge: "Bridge: Apply structural literary analysis and human language syntax directly to artificial neural networks."
+            name: "Digital Creative Director",
+            keywords: { "art": 4, "creative": 5, "media": 4, "brand": 4, "look": 3, "digital": 4, "style": 3 },
+            roadmap: "Build a multi-medium production portfolio across commercial design, brand voice systems, and interactive media.",
+            bridge: "Step up from creating individual art assets to managing high-level visual identity frameworks for global brands."
         },
         {
-            name: "Forensic Psychologist",
-            keywords: { "crime": 4, "psychology": 5, "investigate": 3, "court": 3, "profile": 4, "behavior": 5, "mind": 3 },
-            roadmap: "Earn a Doctorate in Forensic Psychology, focusing on criminal profiles and risk assessments.",
-            bridge: "Bridge: Shift sociological or standard psychological counseling parameters into law and behavioral analysis."
-        }
+            name: "Behavioral Psychologist",
+            keywords: { "psychology": 5, "mind": 4, "research": 4, "people": 4, "logic": 3, "behavior": 5 },
+            roadmap: "Pursue advanced experimental or cognitive psychology degrees and execute human interaction observation models.",
+            bridge: "Convert qualitative insights into structured, data-driven frameworks tracking human mental states."
+        },
+        {
+            name: "Cinematographer & VFX Supervisor",
+            keywords: { "art": 4, "camera": 5, "digital": 4, "creative": 4, "render": 5, "movie": 5 },
+            roadmap: "Master camera lighting layout physics, spatial frame compositions, and virtual engines like Unreal Engine.",
+            bridge: "Weld classic physical camera framing rules with modern high-end computer graphics environments."
+        },
+        {
+            name: "Concept Artist & Game Designer",
+            keywords: { "art": 5, "creative": 4, "game": 5, "story": 4, "render": 4, "engine": 4 },
+            roadmap: "Master digital concept painting tools, 3D world-building architectures, and interactive game design logic.",
+            bridge: "Evolve personal drawing and character sketching talents into functional interactive assets for digital media platforms."
+        },
+        {
+            name: "Creative Copywriter (Brand Architect)",
+            keywords: { "word": 5, "speech": 4, "write": 5, "sell": 4, "story": 4, "ideas": 3 },
+            roadmap: "Master brand storytelling, high-conversion microcopy styles, and psychological ad engagement methods.",
+            bridge: "Convert creative narrative writing habits into short, high-impact marketing assets that drive product sales."
+        },
+        {
+           name: "Architectural Heritage Conservator",
+           keywords: { "building": 5, "old": 4, "history": 5, "classic": 4, "material": 3, "fix": 3 },
+           roadmap: "Study ancient structural history, chemical material conservation processes, and historic preservation ordinances.",
+           bridge: "Deploy historical preservation mechanics to safely restore damaged classical stone and timber structures."
+        },
+        {
+           name: "Investigative Photojournalist",
+           keywords: { "camera": 5, "news": 5, "story": 4, "photo": 5, "travel": 4, "crisis": 4 },
+           roadmap: "Master documentary photography setups, field security protocols, and visual narrative reporting frameworks.",
+           bridge: "Tell complex socio-political news stories using singular, high-emotion visual frames."
+        },
+        {
+           name: "Sound Designer & Foley Artist",
+           keywords: { "sound": 5, "movie": 4, "audio": 5, "noise": 4, "studio": 3, "game": 4 },
+           roadmap: "Learn analog audio capturing methods, digital audio workstation (DAW) editing, and textural noise creation profiles.",
+           bridge: "Create realistic custom auditory effects to back digital onscreen visual shifts perfectly."
+        },
+        {
+           name: "Exhibit Curation Director (Museums)",
+           keywords: { "museum": 5, "history": 4, "layout": 4, "collection": 5, "story": 3, "art": 3 },
+           roadmap: "Master spatial narrative design, artifact preservation workflows, and historical asset tracking styles.",
+           bridge: "Organize historic physical artifacts into clear, self-guided learning walkthroughs for the public."
+        },
+        {
+           name: "Corporate Etiquette & Cross-Cultural Advisor",
+           keywords: { "culture": 5, "talk": 4, "global": 4, "manners": 5, "respect": 4, "coach": 3 }, 
+           roadmap: "Study international communication nuances, localized diplomatic protocols, and cross-border corporate dynamics.",
+           bridge: "Train business executive teams to operate politely and effectively in unfamiliar international territories."
+        },
+        {
+           name: "Typographer & Typeface Designer",
+           keywords: { "font": 5, "text": 4, "letter": 5, "clean": 3, "design": 4, "lines": 3 },
+           roadmap: "Master vector geometric construction metrics, font rendering engines, and visual text readability layouts.",
+           bridge: "Shape custom letter geometries to create highly recognizable, proprietary brand typography fonts."
+        },
+        {
+           name: "Industrial Product Esthetics Designer",
+           keywords: { "design": 5, "hardware": 4, "shape": 4, "look": 4, "product": 5, "material": 3 },
+           roadmap: "Learn ergonomic body modeling, material styling metrics, and 3D prototyping asset tools.", 
+           bridge: "Wrap boring raw hardware engineering mechanics inside sleek, beautiful consumer product shells."
+        },
+        { 
+           name: "Costume & Character Wardrobe Designer",
+           keywords: { "clothes": 5, "fashion": 4, "movie": 4, "stage": 4, "design": 3, "actor": 4 },
+           roadmap: "Master textile history, character subtext wardrobe designs, and rapid costume assembly procedures.",
+           bridge: "Transform raw fabrics into historically accurate, expressive garments that signal character traits instantly."
+        },
+        {
+           name: "Forensic Linguist",
+           keywords: { "text": 5, "law": 4, "write": 4, "style": 3, "identity": 4, "crime": 4 },
+           roadmap: "Study dialectology matrices, stylistic author identification markers, and legal courtroom testimony standards.",
+           bridge: "Identify anonymous threat authors by analyzing recurring grammatical ticks in text patterns."
+        },
+        {
+           name: "Urban Spatial Planner (Aesthetic Layout)", 
+           keywords: { "city": 5, "park": 4, "space": 5, "street": 4, "beautiful": 4, "green": 3 },
+           roadmap: "Study urban landscape design, public transit flow layouts, and community park integration plans.",
+           bridge: "Shape public city geometries to naturally maximize human social interaction and pedestrian safety."
+        },
+        {
+           name: "Creative Editorial Director (Publishing)",
+           keywords: { "book": 5, "edit": 5, "text": 4, "story": 4, "writer": 4, "publish": 3 },
+           roadmap: "Master narrative pacing mechanics, structural manuscript editing, and literary market selection styles.",
+           bridge: "Guide raw writer text manuscripts into highly polished, commercially viable novels."
+        },
+        {
+           name: "Scientific & Medical Illustrator",
+           keywords: { "biology": 5, "draw": 5, "book": 3, "medical": 5, "anatomy": 4, "clear": 3 },
+           roadmap: "Learn human surgical anatomy, cellular structure modeling, and precision 3D medical text drawing.",
+           bridge: "Translate complex, messy medical surgical procedures into clean, highly educational instructional graphics."
+        },
+        {
+           name: "Luxury Lighting Environment Designer",
+           keywords: { "light": 5, "room": 4, "mood": 4, "design": 4, "glow": 3, "hotel": 3 },
+           roadmap: "Master luminaire dispersion geometry modeling, color temperature metrics, and architectural lighting layouts.",
+           bridge: "Manipulate physical light rays to define the emotional atmosphere of high-end hotel spaces."
+        },
+        {
+           name: "Political Speechwriter",
+           keywords: { "word": 5, "speak": 5, "talk": 4, "voice": 4, "election": 5, "crowd": 3 },
+           roadmap: "Master rhetorical patterns, audience cadence tracking, and persuasive messaging strategies.",
+           bridge: "Shape complex government policies into highly memorable, emotionally motivating public speeches."
+        },
+        {
+           name: "Classical Instrument Restorer (Luthier)",
+           keywords: { "violin": 5, "wood": 4, "guitar": 5, "sound": 4, "fix": 3, "acoustic": 4 },
+           roadmap: "Learn specialized wood resonant properties, historic varnishing formulas, and precision structural setups.",
+           bridge: "Restore broken acoustic instruments without degrading their unique historical sound qualities."
+        },
+        {
+           name: "Documentary Film Director",
+           keywords: { "movie": 5, "reality": 5, "story": 4, "interview": 4, "video": 4, "true": 3 },
+           roadmap: "Learn unscripted narrative story frameworks, real-world investigative interviews, and pacing edits.",
+           bridge: "Assemble hours of messy, unscripted real-world footage into a single compelling film narrative."
+        },
+        {
+           name: "Information Design Cartographer",
+           keywords: { "map": 5, "data": 4, "chart": 4, "visual": 4, "clean": 3, "travel": 3 }, 
+           roadmap: "Learn quantitative data visualization, geographic design layers, and vector map creation tools.",
+           bridge: "Flatten complex demographic data layers into highly scannable, intuitive visual maps."
+        },
+        {
+           name: "Art Law & Provenance Specialist",
+           keywords: { "law": 5, "art": 5, "court": 4, "authentic": 4, "history": 4, "theft": 3 },
+           roadmap: "Study international art property law, historic black-market tracking indexes, and scientific paint testing.",
+           bridge: "Protect collectors and museums against forged or stolen high-value art investments."
+        },
+        {
+           name: "Environmental Soundscape Designer",
+           keywords: { "sound": 5, "nature": 4, "room": 3, "museum": 4, "atmosphere": 4, "audio": 4 },
+           roadmap: "Learn multi-channel spatial audio tracking, field sound capture, and acoustic loop design.",
+           bridge: "Build localized audio tracking arrays that make museum visitors feel deep inside a wild space."
+        },
+        {
+           name: "Luxury Packaging Esthetics Designer",
+           keywords: { "box": 5, "brand": 4, "luxury": 4, "paper": 3, "touch": 3, "design": 4 },
+           roadmap: "Master structural paper fold geometries, high-end printing tactics, and premium texturing choices.",
+           bridge: "Design retail product boxes that look and feel expensive, elevating the unboxing experience."
+        },
+        {
+           name: "Ceramic Materials Artist (Studio Lead)",
+           keywords: { "clay": 5, "kiln": 5, "glaze": 4, "heat": 4, "shape": 3, "art": 3 }, 
+           roadmap: "Master chemical glaze formulation physics, kiln temperature curve management, and ceramic sculpting.",
+           bridge: "Control complex chemical reactions at high heat to achieve specific artistic surface textures."
+        },
+        {
+           name: "Applied Ethnomusicologist", 
+           keywords: { "music": 5, "culture": 5, "history": 4, "tribe": 4, "sound": 3, "archive": 4 },
+           roadmap: "Master field recording methods, old tribal rhythm analysis, and sound preservation tools.",
+           bridge: "Document vanishing regional musical traditions and reintroduce them to modern digital sound libraries."
+        },
+        {
+           name: "Theme Park Immersive Space Designer",
+           keywords: { "space": 5, "fun": 4, "theme": 5, "build": 3, "layout": 4, "experience": 4 },
+           roadmap: "Master real-world crowd movement tracking, interactive element layouts, and spatial experience blueprints.",
+           bridge: "Transform movie script worlds into safe, physically interactive amusement park environments."
+        },
+        {
+           name: "Narrative Director (Video Games)",
+           keywords: { "game": 5, "story": 5, "choice": 4, "script": 4, "writer": 3, "world": 3 },
+           roadmap: "Learn non-linear story branching systems, world lore bible construction, and character voice layouts.",
+           bridge: "Translate static script character motivations into fluid player choice trees within game spaces."
+        },
+        {
+           name: "Color Theorist & Trend Forecaster",
+           keywords: { "color": 5, "style": 4, "trend": 5, "eye": 3, "look": 3, "design": 4 },
+           roadmap: "Study seasonal psychological color triggers, commercial production dye standards, and market share tracking.",
+           bridge: "Predict what color palettes will dominate car and fashion retail trends two years in advance."
+        },
+        {
+           name: "Choreographer (Kinetic Space Director)",
+           keywords: { "dance": 5, "move": 5, "stage": 4, "body": 4, "theater": 3, "group": 3 },
+           roadmap: "Master kinetic body expression models, stage spacing configurations, and music rhythm matching setups.",
+           bridge: "Organize complex human movements into structural visual stories across theater stages."
+        },
+        {
+           name: "Strategic Brand Nomenclature Expert",
+           keywords: { "word": 5, "name": 5, "brand": 4, "title": 4, "startup": 3, "linguist": 4 },
+           roadmap: "Master semantic indexing rules, international sound trademark law, and phonetic product tracking models.",
+           bridge: "Invent short, unique brand names that are globally pronounceable and legally protectable."
+        },
+        {
+           name: "Historical Apparel Anthropologist",
+           keywords: { "clothes": 5, "old": 4, "history": 5, "museum": 4, "thread": 3, "search": 3 },
+           roadmap: "Study old fabric manufacturing tools, structural pattern dating, and fiber state testing workflows.",
+           bridge: "Reconstruct true daily clothing styles for ancient eras from damaged fabric artifacts."
+        },
+        {
+           name: "Creative Advertising Director",
+           keywords: { "ad": 5, "idea": 5, "art": 4, "video": 4, "campaign": 5, "sell": 3 },
+           roadmap: "Learn viral media framework designs, visual punchline layouts, and consumer target motivation strategies.",
+           bridge: "Turn simple marketing product targets into highly memorable, artistic digital ad campaigns."
+        },
+        {
+           name: "Architectural Glass Artist",
+           keywords: { "glass": 5, "window": 5, "light": 4, "color": 4, "building": 3, "design": 3 },
+           roadmap: "Master structural glass firing mechanics, lead support framework models, and architectural light dispersion.",
+           bridge: "Build giant colored glass installations that match the load-bearing safety needs of modern buildings."
+        },
+        {
+           name: "Performance Art Curator",
+           keywords: { "stage": 5, "live": 5, "art": 4, "show": 4, "space": 3, "gallery": 4 },
+           roadmap: "Master temporal event scheduling frameworks, live interactive installations, and artist contract structures.",
+           bridge: "Bring live, temporary human art experiences into traditional static gallery display settings."
+        },
+        {
+           name: "Culinary Aesthetic Stylist",
+           keywords: { "food": 5, "photo": 5, "look": 4, "camera": 4, "studio": 3, "chef": 4 },
+           roadmap: "Learn structural food preservation tricks, lighting setups, and visual texture enhancement assets.",
+           bridge: "Prepare real food items to look impossibly perfect during high-end commercial camera shoots."
+        },
+        {
+           name: "Computational Music Archivist",
+           keywords: { "music": 5, "data": 4, "code": 4, "song": 4, "history": 5, "index": 3 },
+           roadmap: "Master digital audio restoration software, melody shape tracking codes, and meta-data indexing frameworks.",
+           bridge: "Process decades of old, scratchy vinyl record tracks into clean, searchable digital streaming files."
+        },
+        {
+           name: "Strategic Interior Landscape Designer",
+           keywords: { "plant": 5, "room": 4, "building": 4, "office": 3, "green": 4, "air": 3 },
+           roadmap: "Learn tropical plant light tracking models, automated interior watering systems, and spatial wellness layouts.",
+           bridge: "Maximize corporate employee focus states by integrating living plant systems into desk layouts."
+        },
+        {
+           name: "Non-Fiction Author (Biographer)",
+           keywords: { "book": 5, "true": 4, "life": 5, "person": 4, "write": 5, "search": 3 },
+           roadmap: "Master historical archive search steps, personal witness interviews, and structural narrative pacing.",
+           bridge: "Turn messy, lifelong historical text records into an engaging, dramatic true character novel."
+        },
+        {
+           name: "Kinetic Sculptor",
+           keywords: { "art": 5, "move": 5, "metal": 4, "gear": 4, "wind": 3, "machine": 3 },
+           roadmap: "Study mechanical gear assembly balancing, wind resistance shapes, and structural metal welding.",
+           bridge: "Build heavy metal art sculptures that move gracefully via natural environmental breezes."
+        },
+        {
+           name: "Corporate Video Narrative Producer",
+           keywords: { "video": 5, "corporate": 4, "camera": 4, "speak": 3, "brand": 4, "business": 4 },
+           roadmap: "Master short-form corporate profiling scripts, interview lighting styles, and fast story pacing tools.",
+           bridge: "Translate corporate investor data sheets into short, high-emotion promotional brand films."
+        },
+        {
+           name: "Gemological Esthetics Sculptor (Lapidary)",
+           keywords: { "gem": 5, "rock": 4, "ring": 4, "cut": 5, "shiny": 4, "diamond": 4 },
+           roadmap: "Master diamond faceting machine setups, crystalline axis line mapping, and mineral grinding metrics.",
+           bridge: "Cut raw, jagged underground mineral rocks to maximize internal reflection and color sparkle."
+        },
+        {
+           name: "Broadcast Media Designer",
+           keywords: { "tv": 5, "screen": 4, "news": 4, "logo": 4, "move": 5, "graphics": 4 },
+           roadmap: "Learn real-time vector motion templates, screen asset packaging, and broadcast ticker setups.",
+           bridge: "Build fluid live graphics packages for fast-paced 24-hour news television channels."
+        },
+        {
+           name: "Metaphorical Illustrator (Editorial)",
+           keywords: { "draw": 5, "news": 4, "cartoon": 5, "idea": 4, "smart": 3, "paper": 3 },
+           roadmap: "Master visual pun asset tracking, satirical composition designs, and fast digital ink rendering.",
+           bridge: "Condense multi-layered geopolitical news events into a single, punchy editorial cartoon frame."
+        },
+        {
+           name: "Classical Calligraphy Master (Manuscript Illuminator)",
+           keywords: { "ink": 5, "text": 4, "beautiful": 5, "hand": 4, "old": 3, "paper": 3 },
+           roadmap: "Learn historic ink mixing recipes, geometric brush layout guides, and real gold leaf applique steps.",
+           bridge: "Replicate the structural precision of old royal scripts on custom handmade paper media."
+        },
+        {
+           name: "Urban Mural Producer",
+           keywords: { "wall": 5, "paint": 5, "city": 4, "giant": 4, "street": 3, "art": 4 },
+           roadmap: "Master giant grid scale-up metrics, outdoor paint weatherproofing, and building scaffolding security.",
+           bridge: "Scale up hand sketches onto ten-story downtown concrete walls accurately."
+        },
+        {
+           name: "Voice Acting Texture Coach",
+           keywords: { "voice": 5, "talk": 4, "accent": 5, "actor": 4, "movie": 3, "mic": 3 },
+           roadmap: "Study dialect tracking systems, speech vocal mechanics, and emotional sound projection steps.",
+           bridge: "Train actors to alter their native speech cadences to match specific historical accents."
+        },
+        {
+           name: "Interactive Art Installation Coder",
+           keywords: { "art": 5, "code": 5, "sensor": 4, "room": 4, "interactive": 5, "lights": 4 },
+           roadmap: "Learn Arduino processing systems, camera motion capture arrays, and dynamic projection mapping.",
+           bridge: "Build physical art gallery rooms that change color and sound based on where visitors step."
+        },
+        {
+           name: "Creative Creative Commons Licensing Expert",
+           keywords: { "law": 5, "art": 4, "sharing": 5, "copy": 4, "web": 3, "rights": 4 },
+           roadmap: "Master public domain legislation models, digital copyleft frameworks, and open-source artist licensing.",
+           bridge: "Help artists share their digital work safely online without losing core monetization rights."
+        },
+        {
+           name: "Luxury Fashion Editorial Stylist",
+           keywords: { "clothes": 5, "photo": 5, "model": 4, "look": 4, "magazine": 5, "trend": 4 },
+           roadmap: "Learn high-fashion brand runway lines, location scout tracking, and visual model composition.",
+           bridge: "Curate diverse clothing designer pieces into cohesive, high-impact photo spreads for fashion media."
+        },
+        {
+           name: "Historical Weaponry Fabricator (Film & Stage)",
+           keywords: { "sword": 5, "armor": 5, "movie": 4, "forge": 4, "steel": 3, "old": 3 },
+           roadmap: "Study ancient blacksmithing frameworks, safe prop metal dulling, and stage combat durability setups.",
+           bridge: "Create realistic medieval battle armor that is light enough for actors to wear safely."
+        },
+        {
+            name: "Scenic Stage Designer (Opera & Theater)",
+            keywords: { "stage": 5, "play": 4, "build": 4, "layout": 4, "scene": 3, "wood": 3 },
+            roadmap: "Master rapid stage backdrop shifts, structural carpentry safety, and sightline perspective designs.",
+            bridge: "Build variable, multi-layered physical scenery panels that can transform theater settings in seconds."
+        },
+        {
+            name: "Botanical Fragrance Alchemist",
+            keywords: { "smell": 5, "flower": 4, "perfume": 5, "oil": 4, "bottle": 3, "mix": 3 },
+            roadmap: "Learn aromatic oil distillation setups, evaporation note pacing, and olfactory scent matching.",
+            bridge: "Combine raw organic plant extracts into structured, long-lasting premium perfume fragrances."
+        },
+        {
+            name: "Digital Comic Letterer & Production Lead",
+            keywords: { "book": 4, "draw": 4, "font": 5, "text": 5, "layout": 3, "bubbles": 4 },
+            roadmap: "Master reading flow eye dynamics, sound effect asset creation, and comic page print file safety.",
+            bridge: "Overlay text and stylized dialogue bubbles onto comic artwork to maximize narrative pace."
+        },
+        {
+            name: "Luxury Cruise Experience Director",
+            keywords: { "ship": 5, "travel": 4, "show": 4, "fun": 5, "host": 3, "event": 4 },
+            roadmap: "Learn multi-day entertainment scheduling, guest demographic mapping, and high-volume performance logistics.",
+            bridge: "Run diverse live events smoothly onboard a moving ocean vessel for thousands of travelers."
+        },
+        {
+            name: "Avant-Garde Furniture Sculptor",
+            keywords: { "chair": 5, "wood": 4, "design": 4, "art": 5, "shape": 3, "home": 3 },
+            roadmap: "Master advanced wood bending methods, custom structural joinery, and functional aesthetic designs.",
+            bridge: "Build household seating furniture items that double as high-concept gallery art sculptures."
+        },
+        {
+            name: "Classical Ballet Master & Mistress",
+            keywords: { "dance": 5, "teach": 4, "body": 4, "style": 3, "stage": 4, "coach": 3 },
+            roadmap: "Master Vaganova or Cecchetti training systems, injury risk tracking, and ensemble sync coaching.",
+            bridge: "Train young physical dancers to execute highly precise classical stage configurations uniformly."
+        },
+        {    
+            name: "Applied Creative Writing Consultant (Therapeutic)",
+            keywords: { "write": 5, "journal": 4, "mind": 5, "help": 4, "speech": 3, "book": 3 },
+            roadmap: "Study narrative psychology patterns, personal prompt tracking models, and safe emotional expression steps.",
+            bridge: "Guide individuals to process stressful memories by writing structured personal stories."
+        },
+        {
+            name: "Experimental Instrument Inventor",
+            keywords: { "sound": 5, "build": 4, "music": 5, "tool": 4, "strange": 3, "electronic": 3 },
+            roadmap: "Study acoustic resonance tube parameters, microtonal tuning scales, and custom pickup wiring loops.",
+            bridge: "Build completely new physical instruments that generate unmapped sonic frequencies."
+        },
+        {
+            name: "Strategic Exhibition Lighting Designer",
+            keywords: { "museum": 5, "light": 5, "paint": 4, "safe": 3, "focus": 4, "gallery": 4 },
+            roadmap: "Master UV-free LED illumination, shadow distraction removal, and painting surface color accuracy.",
+            bridge: "Spotlight delicate multi-million dollar old canvas arts without fading the historic paint chemicals."
+        },
+        {
+            name: "Architectural Metalwork Conservator",
+            keywords: { "iron": 5, "gate": 4, "old": 4, "rust": 5, "fix": 3, "church": 3 },
+            roadmap: "Learn wrought iron corrosion chemistry, historical weld mapping, and protective coating applications.",
+            bridge: "Save decaying 19th-century church iron gates using non-destructive structural repair steps."
+        },
+        {
+            name: "Pop Culture Trend Archivist",
+            keywords: { "trend": 5, "history": 4, "tracking": 4, "digital": 4, "media": 3, "internet": 5 },
+            roadmap: "Master online meme tracking methods, social media data capturing, and subculture identity archiving.",
+            bridge: "Document short-lived internet viral moments into structured historical databases for cultural research."
+        },
+        {
+            name: "Luxury Yacht Interior Esthetic Lead",
+            keywords: { "ship": 4, "boat": 4, "room": 5, "luxury": 5, "leather": 3, "design": 4 },
+            roadmap: "Learn maritime safety materials compliance, space optimization models, and premium wood layouts.",
+            bridge: "Design upscale room layouts that can handle structural shifting and salty air on the open ocean."
+        },
+        {
+            name: "Applied Puppetry & animatronics Performance Specialist",
+            keywords: { "doll": 5, "robot": 4, "movie": 4, "move": 4, "hand": 3, "stage": 3 },
+            roadmap: "Learn physical rod puppet mechanisms, facial gesture timing loops, and character tracking styles.",
+            bridge: "Bring complex silicone animatronic creatures to life through synchronized cable manipulations."
+        },
+        {
+            name: "Creative Map Stylist (Fantasy Worldbuilding)",
+            keywords: { "book": 4, "map": 5, "draw": 5, "game": 4, "land": 3, "story": 4 },
+            roadmap: "Study historical map geometries, ink styling tools, and fictional narrative world geography design.",
+            bridge: "Draw highly detailed, immersive country maps for fantasy novels and roleplaying video games."
+        },
+        {
+            name: "Architectural Acoustic Plaster Artisan",
+            keywords: { "wall": 5, "sound": 5, "room": 4, "smooth": 3, "build": 3 },
+            roadmap: "Learn acoustic sound-absorbing plaster mixes, smooth hand troweling setups, and structural echo testing.",
+            bridge: "Finish auditorium room surfaces to kill echo sounds while maintaining perfectly smooth seamless wall looks."
+        },
+        {     
+            name: "Luxury Watch Dial Enameler",
+            keywords: { "watch": 5, "clock": 4, "paint": 5, "glass": 4, "heat": 3, "micro": 4 },
+            roadmap: "Master microscopic powder painting, high-heat miniature furnace firing, and precision gold inlay sets.",
+            bridge: "Melt glass powder paints smoothly onto small watch faces without a single tiny bubble gap."
+        },
+        {
+            name: "Soundscape Conservation Specialist",
+            keywords: { "quiet": 5, "nature": 4, "park": 4, "sound": 5, "microphone": 4, "save": 3 },
+            roadmap: "Master long-range outdoor audio tracking arrays, ambient sound metrics, and acoustic noise source profiling.",
+            bridge: "Document pristine forest audio spaces and design city rules to protect them from airport noise."
+        },
+        {
+            name: "Applied Theater Corporate Facilitator",
+            keywords: { "acting": 5, "team": 4, "company": 4, "coach": 3, "work": 3, "game": 3 },
+            roadmap: "Learn roleplay empathy exercises, corporate group dynamic simulations, and public speaking confidence steps.",
+            bridge: "Deploy acting games to train corporate staff teams to collaborate better under high pressure."
+        },
+        {
+            name: "High-End Carpet & Textile Pattern Designer",
+            keywords: { "weave": 5, "pattern": 5, "floor": 4, "color": 4, "fabric": 3, "design": 4 },
+            roadmap: "Master jacquard loom data setup, wool color dye matching steps, and repeating geometric layout calculations.",
+            bridge: "Convert flat hand illustrations into complex structural thread patterns for premium woven rugs."
+        },
+        {
+            name: "Historical Fiction Script Consultant",
+            keywords: { "movie": 5, "history": 5, "show": 4, "true": 3, "paper": 3, "check": 3 },
+            roadmap: "Master old court trial records search, historic slang phrase tracking, and period asset validations.",
+            bridge: "Fix historical errors in movie scripts before expensive filming sets are built."
+        },
+        {
+            name: "Luxury Retail Window Illusionist",
+            keywords: { "shop": 5, "street": 4, "display": 5, "art": 4, "look": 3, "glass": 3 },
+            roadmap: "Study visual tracking paths, forced perspective geometry layouts, and specialized window lighting schemes.",
+            bridge: "Design street-side storefront window displays that force walking pedestrians to stop and stare."
+        },
+        {
+            name: "Specialized Food Package Structural Designer",
+            keywords: { "box": 5, "design": 5, "shape": 4, "paper": 4, "clean": 3, "brand": 3 },
+            roadmap: "Master sheet fold stress models, functional opening mechanics, and sustainable print setups.",
+            bridge: "Shape structural box packages that open easily while presenting the inside retail items beautifully."
+        },
+        {
+            name: "Classical Sculpture Conservator",
+            keywords: { "stone": 5, "statue": 5, "fix": 4, "museum": 4, "history": 3, "laser": 3 },
+            roadmap: "Master marble stress testing, laser dirt removal settings, and safe structural pinning anchors.",
+            bridge: "Repair cracked historic stone statues without leaving visible patch lines on the old surface."
+        },
+        {
+            name: "Creative Spatial Sound Layout Engineer",
+            keywords: { "speaker": 5, "concert": 5, "audio": 4, "room": 4, "arena": 3, "track": 3 },
+            roadmap: "Learn Dolby Atmos multi-speaker array setups, line array sound physics, and arena acoustic balancing.",
+            bridge: "Position and program mega-concert speaker setups to deliver clear sound to every stadium seat."
+        },
+        {
+           name: "Fine Jewelry Cast Designer",
+           keywords: { "gold": 5, "ring": 4, "wax": 5, "3d": 4, "design": 4, "mold": 3 },
+           roadmap: "Master wax model carving, 3D matrix software, and investment casting vacuum mold cycles.",
+           bridge: "Turn computer 3D ring drawings into highly accurate hollow casting molds for molten platinum metal."
+        },
+        {
+           name: "Strategic Typography Brand Auditor",
+           keywords: { "text": 5, "font": 5, "corporate": 4, "system": 4, "consistency": 3, "check": 3 },
+           roadmap: "Master font file performance testing, cross-platform readability metrics, and international character matching styles.",
+           bridge: "Audit global companies to ensure their signature text look renders perfectly on all phone screens."
+        },
+        {
+           name: "Applied Creative Non-Fiction Ghostwriter",
+           keywords: { "book": 5, "write": 5, "help": 4, "secret": 3, "story": 4, "person": 3 },
+           roadmap: "Master personal voice capture interviews, structural chapter pacing, and emotional editing loops.",
+           bridge: "Write highly professional autobiographies for famous figures using their exact personal speaking styles."
+        },
+        {
+           name: "Immersive Horror Experience Designer",
+           keywords: { "fear": 5, "game": 4, "house": 5, "event": 4, "dark": 3, "safe": 3 },
+           roadmap: "Study startle-response psychological indicators, emergency safety tracking, and dark room lighting designs.",
+           bridge: "Build hyper-intense scary haunted house attractions that scare actors safely without real danger risks."
+        },
+        {
+           name: "Luxury Shoe Last Sculptor",
+           keywords: { "shoe": 5, "foot": 5, "leather": 4, "shape": 4, "hand": 3, "wood": 3 },
+           roadmap: "Master human foot walking balance models, custom wood carving adjustments, and high-fashion leather wrapping.",
+           bridge: "Sculpt the structural base molds for premium shoes that balance high-fashion heel looks with comfortable wear."
+        },
+        {    
+           name: "Historic Archive Preservation Specialist",
+           keywords: { "book": 5, "old": 4, "paper": 5, "ink": 4, "box": 3, "temperature": 3 },
+           roadmap: "Master acid-free paper cleaning, micro-climate storage settings, and digital scanning cleanup paths.",
+           bridge: "Stop ancient written paper records from crumbling into dust by using precise chemical storage controls."
+        },
+        {    
+           name: "Applied Community Art Development Lead",
+           keywords: { "town": 5, "project": 4, "group": 4, "art": 5, "help": 3, "painting": 3 },
+           roadmap: "Learn local community grant writing paths, public group mural design loops, and neighborhood art events.",
+           bridge: "Gather divided neighborhood residents together to transform empty lots into proud public art spaces."
+        },
+        {    
+           name: "Strategic UX Conversation Designer (Voice AI)",
+           keywords: { "talk": 5, "voice": 5, "ai": 4, "path": 4, "word": 3, "logic": 3 },
+           roadmap: "Learn user conversation branching paths, error dialogue prompts, and voice persona brand styles.",
+           bridge: "Design natural verbal response scripts for smart voice assistants to resolve customer issues smoothly."
+        },
+        {    
+           name: "Historical Costume Dye Specialist",
+           keywords: { "color": 5, "clothes": 4, "plant": 5, "old": 4, "pot": 3, "history": 3 },
+           roadmap: "Learn natural plant extract dye cooking recipes, historic mordant chemical settings, and sun fade protections.",
+           bridge: "Recreate accurate historical clothing color stains for period movies using only organic plant inputs."
+        },
+        {    
+           name: "Creative Botanical Scenographer",
+           keywords: { "plant": 5, "show": 4, "runway": 5, "event": 4, "room": 3, "forest": 3 },
+           roadmap: "Master high-speed floral installation setups, leaf hydration preservation tricks, and spatial landscape design.",
+           bridge: "Transform empty interior runway halls into rich, living forest environments for elite fashion shows."
+        },
+        {    
+           name: "Specialized Comic Book Flattener & Colorist",
+           keywords: { "book": 4, "draw": 4, "color": 5, "mood": 4, "paint": 3, "digital": 3 },
+           roadmap: "Learn digital color palette mood matching, light source casting tracks, and high-speed print prep files.",
+           bridge: "Layer narrative lighting color washes over black-and-white comic book outlines to signal time and mood shifts."
+        },
+        {    
+           name: "Luxury Automobile Acoustic Sound Stylist",
+           keywords: { "car": 5, "door": 4, "click": 5, "sound": 4, "engine": 3, "rich": 3 },
+           roadmap: "Study cabin resonance isolating sheets, door latch sound metric matching, and vehicle hum tuning settings.",
+           bridge: "Engineer the mechanical components of a luxury car door latch to slam with a satisfying, expensive-sounding click noise."
+        },
+        {    
+           name: "Applied Narrative Video Game Localizer",
+           keywords: { "game": 5, "world": 4, "language": 5, "jokes": 4, "write": 3, "culture": 3 },
+           roadmap: "Master foreign humor translation models, regional culture taboos mapping, and text space limit fitting.",
+           bridge: "Adjust a video game's funny dialogue lines so they make sense and feel hilarious to players in foreign countries."
+        },
+        {    
+           name: "High-End Presentation Deck Designer",
+           keywords: { "slide": 5, "pitch": 5, "clean": 4, "layout": 4, "business": 3, "corporate": 3 },
+           roadmap: "Learn executive presentation slide pacing layouts, quantitative data chart simplification, and brand asset sets.",
+           bridge: "Convert boring 50-page text business plans into beautiful, high-impact 10-slide pitch decks that secure investor funding."
+        },
+        {    
+           name: "Historical Glassware Reproduction Artisan",
+           keywords: { "glass": 5, "fire": 4, "blow": 5, "old": 4, "history": 3, "museum": 3 },
+           roadmap: "Master old-style glass blowing setups, historical mineral coloring mixes, and chemical fracture checks.",
+           bridge: "Replicate fragile ancient roman glass cups using authentic melting tools for historical museum displays."
+        },
+        {    
+           name: "Creative Crowdfunding Campaign Director",
+           keywords: { "startup": 5, "money": 4, "video": 5, "web": 4, "rewards": 3, "launch": 3 },
+           roadmap: "Learn pre-launch email funnel building, reward tier value designs, and campaign video hooks.",
+           bridge: "Help independent creators raise thousands of dollars online directly from fans to fund artistic projects."
+        },
+        {    
+           name: "Specialized Exhibit Showcase Micro-Acoustician",
+           keywords: { "museum": 5, "case": 5, "sound": 4, "glass": 4, "quiet": 3, "secure": 3 },
+           roadmap: "Master miniature active sound canceling, box interior material sound damping, and micro-vibration isolation.",
+           bridge: "Insulate priceless display cases from external gallery room footsteps and outside traffic shaking."
+        },
+        {    
+           name: "Strategic Public Art Placement Consultant",
+           keywords: { "town": 5, "sculpture": 5, "park": 4, "traffic": 3, "sight": 3, "look": 3 },
+           roadmap: "Learn public safety structural anchoring codes, vehicle sightline distraction checks, and community wind tests.",
+           bridge: "Guide municipal city councils to safely position massive public art sculptures in busy downtown public squares."
+        },
+        {    
+           name: "Applied Creative Play therapist (Child Focus)",
+           keywords: { "child": 5, "play": 5, "toy": 4, "mind": 4, "help": 3, "game": 3 },
+           roadmap: "Study child developmental milestones tracking, toy interaction symbolic interpretations, and secure play space rules.",
+           bridge: "Help children express and process emotional trauma using non-verbal sandbox and puppet play scenarios."
+        },
+        {    
+           name: "Alternative Photographic Media Restorer",
+           keywords: { "photo": 5, "old": 4, "silver": 5, "chemical": 4, "glass": 3, "clean": 3 },
+           roadmap: "Master old daguerreotype chemistry restoration steps, silver print stabilization, and mold removal tracks.",
+           bridge: "Clean and save fading 19th-century glass plate photo negatives without scraping off the delicate chemical image lines."
+        },
+        {    
+           name: "Strategic Music Sync Licensing Negotiator",
+           keywords: { "song": 5, "movie": 4, "ad": 5, "contract": 4, "law": 3, "money": 3 },
+           roadmap: "Master music copyright usage legalities, territory synchronization pricing, and master recording licensing deals.",
+           bridge: "Connect independent musical artists with movie studios to land high-paying background song placement contracts."
+        },
+        {    
+           name: "Agentic Persona Aesthetic Architect",
+           keywords: { "ai": 5, "character": 4, "voice": 5, "style": 4, "art": 3, "identity": 3, "design": 3 },
+           roadmap: "Master interactive system narrative consistency rules, digital conversational tone calibration, and stylistic user adaptation tracking.",
+           bridge: "Build specific communication style blueprints that guide AI agent interactions to stay witty and tactical for users."
+        }      
     ]
 };
 
