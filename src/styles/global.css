@@ -54,10 +54,8 @@ body, html {
 
 /* GLASSMORPHIC BUTTONS */
 #start-btn.find-button, .choice-btn, .stream-card {
-    background: var(--glass-bg);
+    background: black;
     color: var(--copper);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--glass-border);
     padding: 1.2rem 3rem;
     font-size: 0.9rem;
