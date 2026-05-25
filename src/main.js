@@ -183,16 +183,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let studentResponses = [];
 
     const questionSet = [
-        "What kind of abstract problems do you solve in your mind purely for the satisfaction of finding answers?",
-        "When you observe a complex system, are you more drawn to the mathematical code that governs it, or the physical elements that compose it?",
-        "When you're faced with a massive problem, do you get more satisfaction from researching and finding the absolute truth behind it, or actually building the tool that fixes it?",
-        "How do you handle unexpected setbacks when your initial designs or solutions fail to deliver results?",
-        "In a team setting, are you the one designing, the one calculating, or the one leading?",
-        "What is a topic you could talk about for 30 minutes without preparation?",
-        "Describe your ideal relationship with technology in your daily work.",
-        "What does 'Success' look like to you in terms of your impact on the world?",
-        "Which specific tools or software have you experimented with recently?",
-        "What is one global challenge you feel a personal responsibility to fix?"
+        "What kind of problems do you naturally find yourself drawn to solving?",
+        "How do you prefer to consume and process information?",
+        "What is your relationship with rules, structures, and systems?",
+        "When you work on a project, do you prefer to be at the forefront interacting with people, or working deeply behind the scenes?",
+        "How do you handle long-term preparation and the possibility of setbacks?",
+        "If you had to explain a complex topic to a child, how would you go about it?",
+        "What does making an impact look like to you?",
+        "What subject or activity makes you lose track of time?",
+        "What kind of daily work environment do you picture yourself in five to ten years from now?",
+        "What is one small, practical experiment you can conduct this week to test one of your interests?"
     ];
 
     // Landing to Stream Selection
