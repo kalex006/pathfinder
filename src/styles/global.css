@@ -69,7 +69,7 @@ body, html {
 }
 
 #start-btn.find-button:hover, .choice-btn:hover, .stream-card:hover {
-    background: rgba(217, 131, 36, 0.1);
+    background: black;
     border-color: var(--copper);
     color: #fff;
     transform: translateY(-5px);
