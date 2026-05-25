@@ -151,8 +151,17 @@ body, html {
     background: linear-gradient(transparent, #000);
 }
 
-#kalex-footer span { font-size: 0.7rem; color: rgba(255,255,255,0.4); letter-spacing: 2px; text-transform: uppercase; }
-#kalex-footer .project-name { font-family: 'Cinzel', serif; color: #fff; font-weight: bold; }
+#kalex-footer span { 
+    font-size: 0.7rem; 
+    color: white; 
+    letter-spacing: 2px; 
+    text-transform: uppercase; 
+}
+#kalex-footer .project-name { 
+    font-family: 'Cinzel', serif; 
+    color: #fff; 
+    font-weight: bold; 
+}
 
 /* MOBILE RESPONSIVENESS */
 @media (max-width: 768px) {
